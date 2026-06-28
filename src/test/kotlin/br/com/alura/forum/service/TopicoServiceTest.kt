@@ -27,6 +27,7 @@ class TopicoServiceTest {
         every { findByCursoNome(any(), any())} returns topicos
         every { findAll(paginacao)} returns topicos
     }
+
     val topicoViewMapper: TopicoViewMapper = mockk {
         every { map(any()) } returns TopicoViewTest.build()
     }
