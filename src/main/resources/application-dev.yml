@@ -14,5 +14,19 @@ spring:
   redis:
     host: localhost
     port: 6379
+  mail:
+    host: sandbox.smtp.mailtrap.io
+    port: 2525
+    username: a8fbd5f8241ae9
+    password: abe430a95a19b0
+    properties:
+      mail:
+        transport:
+          protocol: smtp
+        debug: true
+        smtp:
+          auth: true
+          starttls:
+            enable: yes
 jwt:
   secret: secret
