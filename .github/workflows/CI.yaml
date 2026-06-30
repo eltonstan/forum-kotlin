@@ -10,7 +10,7 @@ jobs:
     name: Testes automatizados
     runs-on: ubuntu-latest
 
-    steps:-
+    steps:
       - uses: actions/checkout@v1
 
       - name: Set JDK
