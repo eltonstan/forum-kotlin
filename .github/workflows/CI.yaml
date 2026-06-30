@@ -10,21 +10,6 @@ jobs:
     name: Testes automatizados
     runs-on: ubuntu-latest
 
-    services:
-      mysql:
-        image: mysql:8.0.28
-        env:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: root
-        ports:
-          - 3309:3306
-        # Add this health check block to prevent early connection attempts
-        options: >-
-          --health-cmd="mysqladmin ping"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=3
-
     steps:
       - uses: actions/checkout@v1
 
@@ -32,10 +17,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: '11'
-
-      - name: Create forum database
-        run: |
-          mysql -h 127.0.0.1 -P 3309 -u root -proot -e "CREATE DATABASE IF NOT EXISTS forum;"
 
       - name: Cache de deps
         uses: actions/cache@v3
