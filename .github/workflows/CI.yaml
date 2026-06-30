@@ -10,6 +10,21 @@ jobs:
     name: Testes automatizados
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:8.0.28
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: root
+        ports:
+          - 3309:3306
+        # Add this health check block to prevent early connection attempts
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
     steps:
       - uses: actions/checkout@v1
 
