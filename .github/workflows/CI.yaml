@@ -33,6 +33,13 @@ jobs:
         with:
           java-version: '11'
 
+      - name: Start MySQL service
+        run: sudo systemctl start mysql
+
+      - name: Create forum database
+        run: |
+          mysql -h 127.0.0.1 -u root -proot -e "CREATE DATABASE IF NOT EXISTS forum;"
+
       - name: Cache de deps
         uses: actions/cache@v3
         with:
